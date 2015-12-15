@@ -31,8 +31,8 @@
 }
 
 .cal-heatmap-container .subdomain-text {
-	font-size: 10px;
-	fill: #000;
+	font-size: 15px;
+	fill:#FFF;
 	pointer-events: none
 }
 
@@ -58,32 +58,37 @@ Remove comment to apply this style to date with value equal to 0
 
 .cal-heatmap-container .q1
 {
-	background-color: #AAFFAA;
-	fill: #AAFFAA
+	background-color: #b7e7ff;
+	fill: #b7e7ff;
 }
 
 .cal-heatmap-container .q2
 {
-	background-color: #55BBFF;
-	fill: #55BBFF
+	background-color: #7ed0f9;
+	fill: #7ed0f9;
 }
 
 .cal-heatmap-container .q3
 {
-	background-color: #FF5599;
-	fill: #FF5599
+	background-color: #3fb2ec;
+	fill: #3fb2ec;
 }
 
 .cal-heatmap-container .q4
 {
-	background-color: #A300CC;
-	fill: #A300CC
+	background-color: #23759d;
+	fill: #23759d;
 }
 
 .cal-heatmap-container .q5
 {
-	background-color: #A2503B;
-	fill: #A2503B
+	background-color: #1a506c;
+	fill: #1a506c;
+}
+.cal-heatmap-container .q6
+{
+	background-color: #032133;
+	fill: #032133;
 }
 /*.cal-heatmap-container .q1
 {

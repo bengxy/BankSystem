@@ -245,25 +245,5 @@ function initialize(){
 	$("#sortedTable").append("<table id='example' class='display' cellspacing='0' width='100%' ><thead><tr><th>日期</th><th>星期</th><th>人数</th></tr></thead><tfoot><tr><th>日期</th><th>星期</th><th>人数</th></tr></tfoot></table>");
 }
 
- //直方图handle
-$(document).ready(function(){
-	initialize();
-	var monthData = loadData();
-	var cal = new CalHeatMap();
-	configHeatMap(monthData);
-    
-	cal.init(conf_factory);
-//format data
-	splitedData = configHist(monthData);
 
-	//直方图
- 	// requireEchart();
-	//table
-	configTable(monthData);     
-	//document.getElementById("graph").style.display = "block";    
-	configSortedTable(monthData);
-
-	$(".needdisp").css("display", "block");
-
-});
 
