@@ -1,0 +1,10 @@
+.container{
+	margin-top: 15%;
+}
+.btn-super{
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	font-size: 30px;
+}

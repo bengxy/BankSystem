@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>table2</title>
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../assets/css/tablecloth.css" rel="stylesheet">
+<link href="../assets/css/prettify.css" rel="stylesheet">
+<style type="text/css">
+	table th, td{
+		text-align: center;
+	}
+	table th p{
+		vertical-align: middle;
+	}
+</style>
+</head>
+
+<body style="font-size: 15px">
+<div class="container">
+	<div class="row" align="right" style="padding:20px 0;">
+		<a href="9.html" style="font-size: 33px">返回</a>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table text-align="center" cellpadding="3" cellspacing="1" class="tablesorter" style="text-align:center">
+				<thead>
+					<tr>
+						<th title="业务所号">业务所号</th>
+						<th title="网点名称">网点名称</th>
+						<th title="总折算业务量">总折算业务量</th>
+						<th title="其中：交易型">交易型</th>
+						<th title="其中：营销型">营销型</th>
+						<th title="月均柜员数">月均柜员数</th>
+						<th title="其中：高柜">其中：高柜</th>
+						<th title="其中：低柜">其中：低柜</th>
+						<th title="渠道业务量占比">渠道业务量占比</th>
+
+					</tr>
+				</thead>
+				<tbody id="tableContent">
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!-- <script src="assets/js/jquery-1.7.2.min.js"></script>  -->
+<script type="text/javascript" src="../assets/echarts/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.js"></script> 
+<script src="../assets/js/jquery.tablesorter.min.js"></script> 
+<script src="../assets/js/jquery.tablecloth.js"></script> 
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$.ajax({
+			url:"../PHP/table3.php",
+			type: "POST",
+			data:{
+				format: "json",
+				start_time: "2015-09-21 08:30:00",
+				end_time: "2015-09-21 08:30:00"
+			},
+			dataType: "json",
+		
+			success: function(data){
+				var tableContent = "";
+				for(var i = 0; i < data.length; i++){
+					if(i % 2 == 0){
+						tableContent = tableContent + "<tr class=\"oddrow\">";
+					}else{
+						tableContent = tableContent + "<tr class=\"evenrow\">";
+					}
+					for(var j = 0; j < 9; ++j){
+						tableContent += "<td>" + data[i][j] + "</td>";
+					}
+					tableContent = tableContent + "</tr>";
+				}
+				document.getElementById("tableContent").innerHTML = tableContent;
+				$("table").tablecloth({
+					theme: "default",
+					bordered: true,
+					striped: true,
+					sortable: true,
+					condensed: true
+				});
+			}
+		});
+	});
+</script>
+</body>
+</html>
