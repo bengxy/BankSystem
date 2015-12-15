@@ -17,42 +17,20 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid">
-        <div class="row">
-            <div class="box col-md-12" id="datePicker" align="center" style="height:200px">
-                <p>
-                <!-- 开始时间<input type="text" id="begin" gldp-id="beginDate" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                结束时间<input type="text" id="end" gldp-id="endDate" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="search" id="btn" onclick="btnClick()">检索</button>
-                </p>
-                <div gldp-el="beginDate" style="width:400px; height:300px;"></div>
-                <div gldp-el="endDate" style="width:400px; height:300px;"></div> -->
-            </div>
-        </div>
-        <div class="box col-md-3" id="nav">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" id="nav1"><a class="nav_a" href="1.html">月平均分时点等候人数变化图</a></li>
-                <li role="presentation" id="nav2"><a class="nav_a" href="2.html">月平均分时点弃号变化图</a></li>
-                <li role="presentation" id="nav3"><a class="nav_a" href="3.html">日客流人数、客等指数及时间占比</a></li>
-                <li role="presentation" id="nav4"><a class="nav_a" href="4.html">周实时队列变化图</a></li>
-                <li role="presentation" id="nav5"><a class="nav_a" href="5.html">月客流人数、客等指数及时间占比</a></li>
-                <li role="presentation" id="nav6"><a class="nav_a" href="6.html">客户排队人数对比</a></li>
-                <li role="presentation" id="nav7"><a class="nav_a" href="7.html">客户等候人数对比</a></li>
-                <li role="presentation" id="nav8"><a class="nav_a" href="8.html">月效率对比</a></li>
-                <li role="presentation" id="nav9"><a class="nav_a" href="9.html">渠道业务</a></li>
-            </ul>
-        </div>
-		<div class="row col-md-9" align="center">
-			<button type="button" class="btn btn-default btn-super" onclick="warn()">系统员导入</button>
-			<button type="button" class="btn btn-default btn-super" onclick="warn()">&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;</button>
+	
+        <center>
+		<div class="content" style="margin-top:150px">
+			<button type="button" class="btn btn-info btn-super" onclick="table3()">导入模板</button>
+			<button type="button"  class="btn btn-info btn-super" onclick="show()">搜索</button>
 		</div>
-		<div class="row col-md-9" align="center">
-			<button type="button" class="btn btn-info btn-super" onclick="table3()">&nbsp;&nbsp;导入模板&nbsp;&nbsp;</button>
-			<button type="button" class="btn btn-info btn-super" onclick="show()">&nbsp;数据呈现</button>
-		</div>
-	</div>
+        <div style="margin-top:30px">
+            <a href="#" style="font-size:20px;color:grey">
+                模板示例下载
+            </a>
+        </div>
+        </center>
+	
+
 	<script type="text/javascript" src="../assets/echarts/jquery.min.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
@@ -68,7 +46,7 @@
 			window.alert("功能暂未开放");
 		}
         function table3(){
-            window.location.href = "table3.html";
+           // window.location.href = "table3.html";
         }
     </script>
 </body>
