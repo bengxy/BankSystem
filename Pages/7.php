@@ -1,14 +1,5 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
-<link href="../assets/css/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/nav.css" rel="stylesheet">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../assets/cal-heatmap/cal-heatmap.css"/>
-<link rel="stylesheet" type="text/css" href="../assets/css/view.css"/>
-
-</head>
+<?php include("head.html") ?>
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -42,7 +33,7 @@
                 add pages.
 
                  -->
-                <h1 style="padding-left:200px">XX银行XX网点月排队人数图</h1>
+                <h1 style="padding-left:200px">XX银行XX网点月等待人数图</h1>
 
                 <div class="col-xs-8">
                     <!-- 热度图 -->
@@ -65,61 +56,29 @@
                 <div class="col-xs-8 needdisp" id = "sorted" style="display:none">
                     <h4>日期排序表</h4>
                     <div class="sort-table" id="sortedTable">
-                        
+                        <table id="example" class="display" cellspacing="0" width="100%" >
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>星期</th>
+                                    <th>人数</th>
+                                </tr>
+                            </thead>
+                            
+                             <tfoot>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>星期</th>
+                                    <th>人数</th>
+                                </tr>
+                            </tfoot> 
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <script type="text/javascript" src="../assets/echarts/jquery.min.js"></script>
-    <script type="text/javascript" src="../assets/echarts/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../assets/echarts/d3.min.js"></script>
-    <script type="text/javascript" src="../assets/cal-heatmap/cal-heatmap.min.js"></script>
-    <script type="text/javascript" src="../assets/echarts/echarts.js"></script>
-    <script type="text/javascript" src="../assets/js/glDatePicker.min.js"></script>
-    <!-- <script type="text/javascript" src="../assets/js/bootstrap.js"></script> -->
-    <script type="text/javascript" src="../assets/js/drawmap.js"></script>
-
-    
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            var global_active = "#nav6";
-            $(global_active).addClass("active");
-        });
-        $(window).load(function()
-        {
-            $('input').glDatePicker();
-        });
-    </script>
-    <script type="text/javascript">
-        
-        function btnClick(){
-            initialize();
-            // loadData(monthNum, bankId);
-            //TODO: monthid, yearid, bankid, searchtype
-            var monthData = loadData();
-            var cal = new CalHeatMap();  //热度图handle
-            configHeatMap(monthData);
-            
-            cal.init(conf_factory);
-            
-//format data
-            splitedData = configHist(monthData);
-
-            //直方图
- //           requireEchart();
-
-            //table
-            configTable(monthData);     
-            //document.getElementById("graph").style.display = "block";    
-            configSortedTable(monthData);
-
-            $(".needdisp").css("display", "block");
-        }
-    </script>
+<?php include("footer.html") ?>
 </body>
 </html>

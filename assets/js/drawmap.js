@@ -246,20 +246,24 @@ function initialize(){
 }
 
  //直方图handle
-//$(document).ready(function(){
-	// var monthData = loadData();	//一个月的数据，按星期分开存
-	// console.log(monthData)
-	//绘制热度
-	// var cal = new CalHeatMap();	//热度图handle
-	// configHeatMap(monthData);
-	// cal.init(conf_factory);
+$(document).ready(function(){
+	initialize();
+	var monthData = loadData();
+	var cal = new CalHeatMap();
+	configHeatMap(monthData);
+    
+	cal.init(conf_factory);
+//format data
+	splitedData = configHist(monthData);
 
-	// //直方图
-	// splitedData = configHist(monthData);
-	// requireEchart();
+	//直方图
+ 	// requireEchart();
+	//table
+	configTable(monthData);     
+	//document.getElementById("graph").style.display = "block";    
+	configSortedTable(monthData);
 
-	// //table
-	// configTable(monthData);
+	$(".needdisp").css("display", "block");
 
-//});
+});
 
