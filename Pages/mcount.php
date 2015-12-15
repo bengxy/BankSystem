@@ -9,12 +9,10 @@
     $specify = array(6=>"排队人数",7=>"等待人数",8=>"工作效率");
 ?>
 <html lang="en">
-<?php include("head.html") ?>
+<?php include("head.html"); ?>
 <body>
     <div class="container-fluid">
-        <div class="row col-xl-12 back">
-            123
-        </div>
+      <?php include("backbtn.html"); ?>
         <div class="row content">
             <div class="col-md-5">
                 <!-- 热度图 -->

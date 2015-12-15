@@ -2,7 +2,7 @@
 	margin-top: 10px;
 }
 .content{
-	margin-top: 50px;
+	margin-top: 20px;
 }
 .heatmap{
 	padding-top:20px;
@@ -22,9 +22,12 @@ center {
 .sort-table{
 	width: 600px;
 }
-.back{
+.back {
+	height: 50px;
+}
+.backbtn{
 	float: right;
-	background-color: #ff0000;
-	width:100%;
-	height: 30px;
+	margin-right: 100px;
+	margin-top: 10px;
+
 }
