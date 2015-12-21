@@ -21,27 +21,55 @@
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <style type="text/css">
-
+	body{
+		background-color: #6868A8;
+		font-family: "黑体";
+		color: #FFF;
+	}
 	#loginBox{
-		background-color: #EEE;
-		width: %30;
-		height: 300px;
+		background-color: #6868A8;
+		width: 30%;
+		height: 30%;
 		margin-top: 10%;
 	}
 	#loginBox .col-md-2, .col-md-4, .col-md-10, .col-md-12{
 		vertical-align: middle;
 		text-align: center;
-		height: 40px;
+		height: 80px;
 		margin-top:20px;
+		
 		/*border: solid;
 		border-collapse: true;
 		border-width: 1px;*/
 	}
-
+	h1{
+		font-size: 2.5em;
+	}
+	.col-md-12{
+		margin-bottom: 30px;
+	}
 	#loginBox input{
-		width: 90%;
+		margin-left: 3%;
+		margin-right:15%;
+		font-size: 2em;
 	}
 
+	#submit{
+		color:#6868A8;
+		font-size: 2em;
+		height: auto;
+	}
+/*
+	.col-md-10,.col-md-4,.col-md-offset-4{
+		border-radius:10px;
+		border:1px solid;
+		size:auto;
+	}
+*/
+	.col-md-offset-4,.inp_key{
+		border-radius:10px;
+		size:auto;
+	}
 
 </style>
 </head>
@@ -49,14 +77,21 @@
 <div class="row">
 	<div id="loginBox" class="col-md-4 col-md-offset-4">
 		<div class="row">
-			<div class="col-md-12"><h3>登录</h3></div>
-			<div>
-				<div class="col-md-2 col-sm-2">用户名</div>
-				<div class="col-md-10 col-sm-10"><input type="text"></div>
-			</div>
-			<div>
-				<div class="col-md-2">密码</div>
-				<div class="col-md-10"><input type="password"></div>
+			<div class="col-md-12"><h1>客户规律与效率提升系统</h1></div>
+
+			<div class="control-group">
+				<div class="test">
+					<p>
+						<i class="glyphicon glyphicon-user"></i><input type="text" name="smsy" class="inp_key" onblur="if(this.value == '')this.value=' 用户名';" 
+onclick="if(this.value == ' 用户名')this.value='';" value=" 用户名" style="color:#959593">
+					</p>
+				</div>
+				<div class="test">
+					<p>
+						<i class="glyphicon glyphicon-lock"></i><input type="text" name="smsy" class="inp_key" onblur="if(this.value == '')this.value=' 用户密码';" 
+onclick="if(this.value == ' 用户密码')this.value='';" value=" 用户密码" style="color:#959593">
+					</p>
+				</div>
 			</div>
 			<div>
 				<button class="col-md-4 col-md-offset-4"id="submit" onclick="login()">提交</button>
@@ -66,7 +101,7 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
