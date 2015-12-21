@@ -1,10 +1,9 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-</head>
+<?php include("head.html"); ?>
 <body>
-    <div align="center" style="margin-top:100px">
-        <h1 style="height:100px">日各时段时间效率占比图</h1>
+    <?php include("backbtn.html"); ?>
+	<div align="center" style="margin-top:100px">
+        <h1 style="height:100px">月各时段时间效率占比图</h1>
 
         <div id="main" style="width:70%;height:70%;border:1px solid #ccc;padding:10px;"></div>
     </div>
@@ -13,7 +12,7 @@
     <script type="text/javascript" src="../assets/echarts/d3.min.js"></script>
     <script type="text/javascript" src="../assets/echarts/echarts.js"></script>
     <script type="text/javascript">
-        var myChart, option;//global
+        var myChart,option;//global
         var global_Month=new Array();
         var global_WaitingNumber=new Array(); // 客等人数
         var global_WaitingValue=new Array();  // 客等指数
@@ -46,7 +45,6 @@
                 //'echarts/chart/map'
             ],
             function (ec) {
-                
                 myChart = ec.init(document.getElementById('main'));
                 option = {
                     tooltip : {
@@ -153,7 +151,7 @@
         $.ajax({
             type: "GET",
             //async: false, //同步执行
-            url: "../PHP/3.php",
+            url: "../PHP/5.php",
             /*data:{
                 "from":"2015-08-01",
                 "end":"2015-09-01",

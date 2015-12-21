@@ -1,20 +1,19 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link href="../assets/css/nav.css" rel="stylesheet">
-</head>
+<?php include("head.html"); ?>
 <body>
+    <?php include("backbtn.html"); ?>
 	<div align="center" style="margin-top:100px">
-        <h1 style="height:100px">月各时段时间效率占比图</h1>
+        <h1 style="height:100px">月客等指数与客流人数对比图</h1>
 
         <div id="main" style="width:70%;height:70%;border:1px solid #ccc;padding:10px;"></div>
     </div>
-    
+
+
     <script type="text/javascript" src="../assets/echarts/jquery.min.js"></script>
     <script type="text/javascript" src="../assets/echarts/d3.min.js"></script>
     <script type="text/javascript" src="../assets/echarts/echarts.js"></script>
     <script type="text/javascript">
-        var myChart,option;//global
+        var myChart, option;//global
         var global_Month=new Array();
         var global_WaitingNumber=new Array(); // 客等人数
         var global_WaitingValue=new Array();  // 客等指数
@@ -47,11 +46,20 @@
                 //'echarts/chart/map'
             ],
             function (ec) {
+                //--- 折柱 ---
                 myChart = ec.init(document.getElementById('main'));
+
+               // console.log(global_Month);
                 option = {
                     tooltip : {
                         trigger: 'axis'
                     },
+					/*
+                    title : {
+                        text: '月客等指数与客流人数对比图',
+                        //x:'center'
+                    },
+					*/
                     toolbox: {
                         show : true,
                         feature : {
@@ -64,92 +72,86 @@
                     },
                     calculable : true,
                     legend: {
-                        data:['0~10分钟人数','10~20分钟人数','20~30分钟人数','30分钟以上人数'],
+                        data:['排队人数','客等指数'],
                         //x:'left'
+                    },
+                    datazoom:{
+                        show:true
                     },
                     xAxis : [
                         {
                             type : 'category',
+                            //splitNumber:5,
+                            
                             data : global_Month,
                         }
                     ],
                     yAxis : [
                         {
                             type : 'value',
-                            name : '等候人数占比',
+                            name : '排队人数',
                             axisLabel : {
-                                formatter: '{value} %'
+                                formatter: '{value} 人'
                             },
-                            //splitArea : {show : true}
+                            splitArea : {show : true}
                         },
+                        {
+                            type : 'value',
+                            name : '客等指数',
+                            axisLabel : {
+                                formatter: '{value} '
+                            }
+                        }
                     ],
                     series : [
                         {
-                            name:'0~10分钟人数',
+                            name:'排队人数',
                             type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent0to10,
-                            itemStyle : {
+                            data:global_WaitingNumber,
+                            itemStyle: {
                                 normal: {
-                                    color:'#76bcc2',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
+                                    color:'#87cefa'
+                                },
+                                label:{
+                                    show: true, 
+                                    position: 'insideRight',
+                                    textStyle:{
+                                        color:"#FFFFFF"
                                     }
-                                },
+                                }
                             },
+                            //data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
                         },
                         {
-                            name:'10~20分钟人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent10to20,
-                            itemStyle : {
+                            name:'客等指数',
+                            type:'line',
+                            yAxisIndex: 1,
+                            z:2,
+                            data:global_WaitingValue,
+                            itemStyle: {
                                 normal: {
-                                    color:'#f0b644',
+                                    lineStyle: {
+                                        shadowcolor:'rgba(0.5,0,0,0.4)',
+                                        width:2
+                                        //shadowcolor:'rgba(0.2,0.3,0.4,0.4)'
+                                    },
                                     label : {
                                         show: true, 
                                         position: 'insideRight',
-                                    }   
-                                },
+                                        textStyle:{
+                                            color:"#FFFFFF"
+                                        }
+                                    }
+                                }
                             },
-                        },
-                        {
-                            name:'20~30分钟人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent20to30,
-                            itemStyle : {
-                                normal: {
-                                    color:'#3fc1ac',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }   
-                                },
-                            },
-                        },
-                        {
-                            name:'30分钟以上人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercentOver30,
-                            itemStyle : {
-                                normal: {
-                                    color:'#d97aa0',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }   
-                                },
-                            },
-                        },
+                            //data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                        }
                     ]
                 };
             }
         );
     </script>
-	<script type="text/javascript">
+    <script type="text/javascript">
         $.ajax({
             type: "GET",
             //async: false, //同步执行

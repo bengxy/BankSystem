@@ -1,11 +1,8 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-</head>
+<?php include("head.html"); ?>
 <body>
 <div class="container" style="width:800px;margin-top:50px" align="center">
+    <?php include("backbtn.html"); ?>
     <h1 style="height:100px">日平均分时点客流量表</h1>
     <h3 id="title_org" style="display:none">统计机构：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**支行</h3>
     <h3 id="title_date" style="display:none">统计日期：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20150901——20150930</h3>

@@ -1,8 +1,5 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
-</head>
+<?php include("head.html"); ?>
 <body>
     <div align="center" style="margin-top:100px">
         <h1 style="height:100px">日客等指数与客流人数对比表</h1>

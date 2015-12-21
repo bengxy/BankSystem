@@ -1,11 +1,7 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link href="../assets/css/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/nav.css" rel="stylesheet">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-</head>
+<?php include("head.html"); ?>
 <body>
+    <?php include("backbtn.html"); ?>
     <div align="center" style="margin-top:100px">
         <h1 style="height:100px">周实时队列变化图</h1>
         <div id="main" style="width:1200px;height:600px;border:1px solid #ccc;padding:10px;"></div>
@@ -40,15 +36,18 @@
                 },
                 //data:data,
                 success: function(data){
+                    setTimeout( function () { console.log("wait");},20);
                     for(var i =0;i < data[0].length;i++){
                         global_time[i] = data[0][i];
                         global_num[i] = data[1][i]*1;
                     }   
                     console.log("");    
-                    setTimeout( function () { myChart.setOption(option);},10);
+                    
+                    //myChart.setOption(option);
                 }
             });
-           
+            //setTimeout( function () { myChart.setOption(option);},50);
+            
         });
 
         require.config({
@@ -152,6 +151,8 @@
                 
             }
         );
+
+setTimeout( function () { myChart.setOption(option);},200);
     </script>       
 </body>
 </html>

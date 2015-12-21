@@ -1,10 +1,7 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-</head>
+<?php include("head.html"); ?>
 <body>
+    <?php include("backbtn.html"); ?>
     <div align="center" style="margin-top:100px">
         <h1 style="height:100px">月平均分时点等候人数变化图</h1>
 
@@ -23,7 +20,6 @@
         var global_weekday = new Array();
         var global_sunday = new Array();
         var global_saturday = new Array(); 
-
         require.config({
             paths: {
                 echarts: '../assets/echarts'
@@ -126,12 +122,11 @@
                 };      
             }
         );
-
         $(document).ready(function(){
             console.log("2");
             $.ajax({
                 url:"../PHP/1.php",
-                async: false,
+                //async: false,
                 type: "POST",
                 data:{
                     format: "json",
@@ -156,6 +151,7 @@
                         global_time[i+2] = data[3][i];
                     }
                     setTimeout( function () { myChart.setOption(option);},10);
+                    //myChart.setOption(option);
                     var dataNew = new Array();
                     for(var i =2;i < global_time.length-1;i++){
                         dataNew[i-2] = new Array();

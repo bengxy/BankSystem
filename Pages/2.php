@@ -1,11 +1,7 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link href="../assets/css/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/nav.css" rel="stylesheet">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-</head>
+<?php include("head.html"); ?>
 <body>
+    <?php include("backbtn.html"); ?>
     <div class="container">
         <h3 align="center" style="margin-top:50px;margin-bottom:50px">工作日月平均分时点弃号变化图</h3>
         <div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
@@ -48,7 +44,7 @@
 
             $.ajax({
                 url:"../PHP/2.php",
-                async: false,
+                //async: false,
                 type: "GET",
                 data:{
                     format:'json',

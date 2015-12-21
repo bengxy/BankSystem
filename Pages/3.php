@@ -1,8 +1,7 @@
 <html lang="en">
-<head>
-<meta charset="utf-8">
-</head>
+<?php include("head.html"); ?>
 <body>
+    <?php include("backbtn.html"); ?>
     <div align="center" style="margin-top:100px">
         <h1 style="height:100px">日客等指数与客流人数对比图</h1>
 
