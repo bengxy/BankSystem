@@ -1,94 +1,19 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
-<link href="../assets/css/glDatePicker.default.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/nav.css" rel="stylesheet">
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="box col-md-12" id="datePicker" align="center" style="height:200px">
-                <p>
-                开始时间<input type="text" id="begin" gldp-id="beginDate" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                结束时间<input type="text" id="end" gldp-id="endDate" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="search" id="btn" onclick="btnClick()">检索</button>
-                </p>   
-                <div gldp-el="beginDate" style="width:400px; height:300px;">
-                </div>
+    <div align="center" style="margin-top:100px">
+        <h1 style="height:100px">日客等指数与客流人数对比图</h1>
 
-                <div gldp-el="endDate" style="width:400px; height:300px;">
-                </div>
-            </div>
-            <div class="box col-md-3" id="nav">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" id="nav1"><a class="nav_a" href="1.html">月平均分时点等候人数变化图</a></li>
-                    <li role="presentation" id="nav2"><a class="nav_a" href="2.html">月平均分时点弃号变化图</a></li>
-                    <li role="presentation" id="nav3"><a class="nav_a" href="3.html">日客流人数、客等指数及时间占比</a></li>
-                    <li role="presentation" id="nav4"><a class="nav_a" href="4.html">周实时队列变化图</a></li>
-                    <li role="presentation" id="nav5"><a class="nav_a" href="5.html">月客流人数、客等指数及时间占比</a></li>
-                    <li role="presentation" id="nav6"><a class="nav_a" href="6.html">客户排队人数对比</a></li>
-                    <li role="presentation" id="nav7"><a class="nav_a" href="7.html">客户等候人数对比</a></li>
-                    <li role="presentation" id="nav8"><a class="nav_a" href="8.html">月效率对比</a></li>
-                    <li role="presentation" id="nav9"><a class="nav_a" href="9.html">渠道业务</a></li>
-                </ul>
-            </div>
-            <div class="row col-md-9">
-                <!-- 
-
-                add pages.
-
-                 -->
-
-                <div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
-                <div id="main2" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
-                <div id="main3" style="height:10px;border:0px solid #ccc;padding:10px;"></div>
-                <table id="example" class="display" cellspacing="0" width="100%" style="display:none">
-                    <thead>
-                        <tr>
-                            <th>日期</th>
-                            <th>等候人数</th>
-                            <th>客等指数</th>
-                            <th>客等时间占比0~10分钟</th>
-                            <th>客等时间占比10~20分钟</th>
-                            <th>客等时间占比20~30分钟</th>
-                            <th>客等时间占比大于30分钟</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                           <th>日期</th>
-                            <th>等候人数</th>
-                            <th>客等指数</th>
-                            <th>客等时间占比0~10分钟</th>
-                            <th>客等时间占比10~20分钟</th>
-                            <th>客等时间占比20~30分钟</th>
-                            <th>客等时间占比大于30分钟</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
+        <div id="main" style="width:70%;height:70%;border:1px solid #ccc;padding:10px;"></div>
     </div>
-
-
+    
     <script type="text/javascript" src="../assets/echarts/jquery.min.js"></script>
-    <script type="text/javascript" src="../assets/echarts/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../assets/echarts/d3.min.js"></script>
     <script type="text/javascript" src="../assets/echarts/echarts.js"></script>
-    <script type="text/javascript" src="../assets/js/glDatePicker.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
     <script type="text/javascript">
-        $(window).load(function()
-        {
-            $('input').glDatePicker();
-        });
-    </script>
-    <script type="text/javascript">
-        var myChart, myChart2, option, option2;//global
+        var myChart, option;//global
         var global_Month=new Array();
         var global_WaitingNumber=new Array(); // 客等人数
         var global_WaitingValue=new Array();  // 客等指数
@@ -129,16 +54,12 @@
                     tooltip : {
                         trigger: 'axis'
                     },
-                    title : {
-                        text: '日客等指数与客流人数对比图',
-                        //x:'center'
-                    },
                     toolbox: {
                         show : true,
                         feature : {
                             mark : {show: true},
-                            dataView : {show: true, readOnly: false},
-                            magicType: {show: true, type: ['line', 'bar']},
+                            //dataView : {show: true, readOnly: false},
+                            //magicType: {show: true, type: ['line', 'bar']},
                             restore : {show: true},
                             saveAsImage : {show: true}
                         }
@@ -221,193 +142,39 @@
                         }
                     ]
                 };
-                
-
-                myChart2 = ec.init(document.getElementById('main2'));
-                option2 = {
-                    tooltip : {
-                        trigger: 'axis'
-                    },
-                    title : {
-                        text: '日各时段时间效率占比图',
-                        //x:'center'
-                    },
-                    toolbox: {
-                        show : true,
-                        feature : {
-                            mark : {show: true},
-                            dataView : {show: true, readOnly: false},
-                            magicType: {show: true, type: ['line', 'bar']},
-                            restore : {show: true},
-                            saveAsImage : {show: true}
-                        }
-                    },
-                    calculable : true,
-                    legend: {
-                        data:['0~10分钟人数','10~20分钟人数','20~30分钟人数','30分钟以上人数'],
-                        //x:'left'
-                    },
-                    xAxis : [
-                        {
-                            type : 'category',
-                            data : global_Month,
-                        }
-                    ],
-                    yAxis : [
-                        {
-                            type : 'value',
-                            name : '等候人数占比',
-                            axisLabel : {
-                                formatter: '{value} %'
-                            },
-                            //splitArea : {show : true}
-                        },
-                    ],
-                    series : [
-                        {
-                            name:'0~10分钟人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent0to10,
-                            itemStyle : {
-                                normal: {
-                                    color:'#76bcc2',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }
-                                },
-                            },
-                        },
-                        {
-                            name:'10~20分钟人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent10to20,
-                            itemStyle : {
-                                normal: {
-                                    color:'#f0b644',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }   
-                                },
-                            },
-                        },
-                        {
-                            name:'20~30分钟人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercent20to30,
-                            itemStyle : {
-                                normal: {
-                                    color:'#3fc1ac',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }   
-                                },
-                            },
-                        },
-                        {
-                            name:'30分钟以上人数',
-                            type:'bar',
-                            stack:'总量',
-                            data:global_WaitingPercentOver30,
-                            itemStyle : {
-                                normal: {
-                                    color:'#d97aa0',
-                                    label : {
-                                        show: true, 
-                                        position: 'insideRight',
-                                    }   
-                                },
-                            },
-                        },
-                    ]
-                };
-                //myChart.setOption(option);
-                //myChart2.setOption(option2);
-                
-              //  $(document).ready(function(){
-                //通过Ajax获取数据
-            }
+			}
         );
     </script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            var global_active = "#nav3";
-            $(global_active).addClass("active");
-        });
-        function btnClick(){
-            $.ajax({
-                type: "GET",
-                //async: false, //同步执行
-                url: "../PHP/3.php",
-                /*data:{
-                    "from":"2015-08-01",
-                    "end":"2015-09-01",
-                },*/
-                dataType: "json", //返回数据形式为json
-                success: function (result) {
-                    var data = result;
-                    if (data) {
-                        for (var i = 0; i <data[0].length; i++) {
-                            global_Month[i] = data[0][i];
-                            global_WaitingNumber[i]=data[1][i]; // 客等人数
-                            global_WaitingValue[i]=data[2][i];  // 客等指数
-                            global_WaitingPercent0to10[i]=data[3][i]; //客等时间占比
-                            global_WaitingPercent10to20[i]=data[4][i];
-                            global_WaitingPercent20to30[i]=data[5][i];
-                            global_WaitingPercentOver30[i]=data[6][i];                                
-                        };                       
-                        console.log("123");
-                        
-                        //console.log(global_Month[0]);
-                        /*
-                        function delayRun(code,time) {
-                            var t=setTimeout(code,time);
-                        }
-                        console.log(option);
-                        delayRun(myChart.setOption(option),1000);
-                        delayRun(myChart2.setOption(option2),1000);
-                        */
-                        setTimeout( function () { myChart.setOption(option); myChart2.setOption(option2);},10);
-
-                        var dataNew = new Array();
-                        for(var i = 0;i<data[0].length;i++){
-                            dataNew[i] = new Array();
-                            dataNew[i][0] = data[0][i];
-                            dataNew[i][1] = data[1][i];
-                            dataNew[i][2] = data[2][i];
-                            dataNew[i][3] = data[3][i];
-                            dataNew[i][4] = data[4][i];
-                            dataNew[i][5] = data[5][i];
-                            dataNew[i][6] = data[6][i];
-
-                        }
-                        //document.getElementById('main3');
-                        document.getElementById("example").style.display = "block";
-                        var tabnew =  $('#example').DataTable( {
-                            data: dataNew,
-                            rows: [
-                            { title: "日期" },
-                            { title: "等候人数" },
-                            { title: "客等指数" },
-                            { title: "客等时间占比0~10分钟" },
-                            { title: "客等时间占比10~20分钟" },
-                            { title: "客等时间占比20~30分钟" },
-                            { title: "客等时间占比大于30分钟" }
-                   
-                            ]
-                        } );
-                    }
-                },
-                error: function (errorMsg) {
-                    console.log(global_Month);
+        $.ajax({
+            type: "GET",
+            //async: false, //同步执行
+            url: "../PHP/3.php",
+            /*data:{
+                "from":"2015-08-01",
+                "end":"2015-09-01",
+            },*/
+            dataType: "json", //返回数据形式为json
+            success: function (result) {
+                var data = result;
+                if (data) {
+                    for (var i = 0; i <data[0].length; i++) {
+                        global_Month[i] = data[0][i];
+                        global_WaitingNumber[i]=data[1][i]; // 客等人数
+                        global_WaitingValue[i]=data[2][i];  // 客等指数
+                        global_WaitingPercent0to10[i]=data[3][i]; //客等时间占比
+                        global_WaitingPercent10to20[i]=data[4][i];
+                        global_WaitingPercent20to30[i]=data[5][i];
+                        global_WaitingPercentOver30[i]=data[6][i];                                
+                    };                       
+                    console.log("123");
+                    setTimeout( function () { myChart.setOption(option); },10);
                 }
-            });
-        }
+            },
+            error: function (errorMsg) {
+                console.log(global_Month);
+            }
+        });
     </script>
 </body>
 </html>
