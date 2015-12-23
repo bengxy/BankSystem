@@ -6,7 +6,10 @@
     if(is_null($type)){
         $type = 6;
     }
-    $specify = array(6=>"排队人数",7=>"等待人数",8=>"工作效率");
+   
+    echo '<script>var globalMonth = '.$type.';</script>';
+
+    $specify = array(6=>"等候人数",7=>"排队人数",8=>"工作效率");
 ?>
 <html lang="en">
 <?php include("head.html"); ?>

@@ -68,9 +68,7 @@
                 //--- 折柱 ---
                 myChart = ec.init(document.getElementById('main'));
                 option = {
-                    /*tooltip : {
-                        trigger: 'axis'
-                    },*/
+                   
                     tooltip : {
                         trigger: 'item',
                         formatter : function (params) {
@@ -95,7 +93,7 @@
                         show : true,
                         feature : {
                             mark : {show: true},
-                            //dataView : {show: true, readOnly: false},
+                            //dataView : {show: true, readOnly: true},
                             //magicType : {show: true, type: ['line', 'bar']},
                             restore : {show: true},
                             saveAsImage : {show: true}

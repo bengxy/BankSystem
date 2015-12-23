@@ -191,15 +191,30 @@ function configTable(monthData){
 	$("thead.weekhead").append("<td>周五</td>");
 	$("thead.weekhead").append("<td>周六</td>");
 	$("thead.weekhead").append("<td>周日</td>");
+	var aver = [0, 0, 0, 0, 0, 0, 0];
+	var count = [0, 0, 0, 0, 0, 0, 0];
 	for (var i = 0; i < monthData['length']; i++) {
 		$("tbody").append("<tr id='w"+i+"'></tr>");
 		$("#w"+i).append("<td>第"+(i+1)+"周</td");
 		for (var j = 0; j < 7; j++) {
 			var tmp = option_factory['series'][i]['data'][j];
-			var xx = ( tmp < 0)?" ":tmp;
+			var xx = " ";
+			if( tmp>=0){
+				aver[j] += tmp;
+				count[j]++;
+				xx = tmp;
+				if( globalMonth == 8){
+					xx = xx+'%';
+				}
+			}
 			$("#w"+i).append("<td>"+xx+"</td");
 		};
 	};
+	$("tbody").append("<tr id='waver' class='success'></tr>");
+	$("#waver").append("<td>平均</td>");
+	for(var j=0;j<7;j++){
+		$("#waver").append("<td>"+aver[j]/count[j]+((globalMonth==8)?'%':'')+"</td>");
+	}
 }
 
 var Eng2Zh = ['周日','周一','周二','周三',	'周四','周五','周六'];
@@ -217,12 +232,19 @@ function configSortedTable(monthData){
 				dataNew[row][0] = x.toISOString().substr(0,10);//(x.getMonth()+1)+"."+x.getDate();
 				dataNew[row][1] = Eng2Zh[x.getDay()];
 				dataNew[row][2] = ref[j];
+				if( globalMonth == 8){
+					dataNew[row][2] +='%';
+				}
 				row++;
 			}
 		}
 	};
 
 	$("#example").DataTable({
+		"columnDefs":[{
+			"orderable":false,
+			"targets":1
+		}],
 		data: dataNew,
 		rows:[
 			{title: "日期"},

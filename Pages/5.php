@@ -70,7 +70,7 @@
                             saveAsImage : {show: true}
                         }
                     },
-                    calculable : true,
+                    calculable : false,
                     legend: {
                         data:['排队人数','客等指数'],
                         //x:'left'
