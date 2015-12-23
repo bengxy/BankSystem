@@ -200,24 +200,21 @@ function configTable(monthData){
 			var tmp = option_factory['series'][i]['data'][j];
 			var xx = " ";
 			if( tmp>=0){
+				aver[j] += tmp;
+				count[j]++;
 				xx = tmp;
 				if( globalMonth == 8){
 					xx = xx+'%';
-					aver[j] += tmp;
-					count[j]++;
 				}
 			}
 			$("#w"+i).append("<td>"+xx+"</td");
 		};
 	};
-	if( globalMonth == 8){
-		$("tbody").append("<tr id='waver' class='success'></tr>");
-		$("#waver").append("<td>平均</td>");
-		for(var j=0;j<7;j++){
-			$("#waver").append("<td>"+aver[j]/count[j]+((globalMonth==8)?'%':'')+"</td>");
-		}
+	$("tbody").append("<tr id='waver' class='success'></tr>");
+	$("#waver").append("<td>平均</td>");
+	for(var j=0;j<7;j++){
+		$("#waver").append("<td>"+aver[j]/count[j]+((globalMonth==8)?'%':'')+"</td>");
 	}
-	
 }
 
 var Eng2Zh = ['周日','周一','周二','周三',	'周四','周五','周六'];
