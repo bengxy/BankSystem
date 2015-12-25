@@ -241,15 +241,12 @@ function configSortedTable(monthData){
 	};
 
 	$("#example").DataTable({
-		"columnDefs":[{
-			"orderable":false,
-			"targets":1
-		}],
+	
 		data: dataNew,
 		rows:[
 			{title: "日期"},
 			{title: "星期"},
-			{title: "人数"}
+			{title: "数值"}
 		],
 		searching: false,
 		processing: true,
@@ -264,7 +261,7 @@ function initialize(){
 	document.getElementById("sortedTable").innerHTML = "";
 
 	$("#onewTable").append("<table class='table table-striped'><thead class='weekhead'></thead><tbody></tbody></table>");
-	$("#sortedTable").append("<table id='example' class='display' cellspacing='0' width='100%' ><thead><tr><th>日期</th><th>星期</th><th>人数</th></tr></thead><tfoot><tr><th>日期</th><th>星期</th><th>人数</th></tr></tfoot></table>");
+	$("#sortedTable").append("<table id='example' class='display' cellspacing='0' width='100%' ><thead><tr><th>日期</th><th>星期</th><th>"+((globalMonth==8)?"占比":"人数")+"</th></tr></thead><tfoot><tr><th>日期</th><th>星期</th><th>"+((globalMonth==8)?"占比":"人数")+"</th></tr></tfoot></table>");
 }
 
 

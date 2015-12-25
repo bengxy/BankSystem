@@ -41,22 +41,7 @@
                     <center>
                         <h4>日期排序表</h4>
                         <div class="sort-table" id="sortedTable">
-                            <table id="example" class="display" cellspacing="0" width="100%" >
-                                <thead>
-                                    <tr>
-                                        <th>日期</th>
-                                        <th>星期</th>
-                                        <th>人数</th>
-                                    </tr>
-                                </thead>
-                                 <tfoot>
-                                    <tr>
-                                        <th>日期</th>
-                                        <th>星期</th>
-                                        <th>人数</th>
-                                    </tr>
-                                </tfoot> 
-                            </table>
+                            
                         </div>
                     </center>
                 </div>
